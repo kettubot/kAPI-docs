@@ -93,6 +93,8 @@ Unlike Discord, who are lazy, we actually document all our JSON error codes. Pro
 | 10008 | unknown service history               |
 | 10009 | unknown interruption                  |
 | 10010 | unknown interruption update           |
+| 10011 | unknown kettu                         |
+| 10012 | unknown kettu shard                   |
 | 40001 | blacklisted                           |
 | 40002 | unauthorized, invalid token           |
 | 40003 | bots cannot use this endpoint         |
