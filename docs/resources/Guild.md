@@ -50,21 +50,15 @@ However, `autopurge` is an extension of the `purge` command, and is a singular f
 
 #### Guild Configuration Logs Structure
 
-| field         | type      | description                                                           |
-| ------------- | --------- | --------------------------------------------------------------------- |
-| automod       | snowflake | log channel for automod                                               |
-| mod           | snowflake | log channel for moderation actions                                    |
-| join          | snowflake | join log channel                                                      |
-| joinDM        | object    | join DM custom response                                               |
-| joinMessage   | object    | join message custom response                                          |
-| leave         | snowflake | leave log channel                                                     |
-| leaveMessage  | object    | leave message custom response                                         |
-| messageEdit   | snowflake | log channel for message edits                                         |
-| messageDelete | snowflake | log channel for message deletes                                       |
-| nickname      | snowflake | log channel for nickname changes                                      |
-| role          | snowflake | log channel for roles (giddy: general roles or selfroles/reactroles?) |
-| vc            | snowflake | log channel for vc actions                                            |
-| type          | integer   | message style for logs                                                |
+| field   | type      | description                         |
+| ------- | --------- | ----------------------------------- |
+| mod     | snowflake | log channel for moderation actions  |
+| modSkip | integer   | action types which aren't logged \* |
+| join    | snowflake | join log channel                    |
+| leave   | snowflake | leave log channel                   |
+| type    | integer   | message style for logs              |
+
+\* Same format as Guild Configuration Mod Actions Structure below, but all are disabled (not skipped) by default
 
 ##### Custom Response
 
@@ -84,15 +78,15 @@ Giddy still needs to plan this.
 
 #### Guild Configuration Mod Structure
 
-| field     | type    | description                                                    |
-| --------- | ------- | -------------------------------------------------------------- |
-| confirm   | string  | level at which to confirm mod actions: `none`, `mass` or `all` |
-| type      | integer | message style for mod actions                                  |
-| deleteCmd | boolean | whether to delete mod commands                                 |
-| deleteErr | boolean | whether to (auto?) delete mod command errors                   |
-| dm        | object  | mod dm configuration                                           |
-| role      | object  | moderation role IDs                                            |
-| action    | object  | which actions are counted as cases                             |
+| field       | type    | description                                                    |
+| ----------- | ------- | -------------------------------------------------------------- |
+| confirm     | string  | level at which to confirm mod actions: `none`, `mass` or `all` |
+| type        | integer | message style for mod actions                                  |
+| deleteCmd   | boolean | whether to delete mod commands                                 |
+| deleteErr   | boolean | whether to (auto?) delete mod command errors                   |
+| dm          | object  | mod dm configuration                                           |
+| role        | object  | moderation role IDs                                            |
+| actionCases | integer | bitfield representing which actions are counted as cases       |
 
 ##### Guild Configuration Mod DM Structure
 
@@ -117,9 +111,22 @@ The mod roles structure is an object of role types mapped to their corresponding
 
 ##### Guild Configuration Mod Actions Structure
 
-Determines whether certain actions are counted as new cases or not. Action types are mapped to boolean values. Default-on types are indicated below.
+Determines whether certain actions are counted as new cases or not. Default-on actions are indicated below.
 
-Action types: `lockchannel`, `lockcategory`, `lockserver` (on), `raidmode` (on), `purge`, `deletecase` (on), `editcase`
+| value   | internal name | default on |
+| ------- | ------------- | ---------- |
+| 1 << 0  | strike        | ✓          |
+| 1 << 1  | ban           | ✓          |
+| 1 << 2  | kick          | ✓          |
+| 1 << 3  | mute          | ✓          |
+| 1 << 4  | purge         |            |
+| 1 << 5  | raidmode      | ✓          |
+| 1 << 6  | slowmode      |            |
+| 1 << 7  | lockserver    | ✓          |
+| 1 << 8  | lockcategory  | ✓          |
+| 1 << 9  | lockchannel   |            |
+| 1 << 10 | editcase      |            |
+| 1 << 11 | deletecase    | ✓          |
 
 #### Guild Configuration Roles Structure
 
