@@ -100,11 +100,11 @@ When using `wss.broadcast`, sending an event to clients in a specific room will 
 
 Commands are payloads sent to the Gateway in order to perform specific actions or request data.
 
-| name           | description                                               |
-| -------------- | --------------------------------------------------------- |
-| heartbeat      | used to maintain connections and detect broken links      |
-| identify       | used to identify the user of the gateway connection       |
-| resume         | used to resume a disconnected session                     |
+| name      | description                                          |
+| --------- | ---------------------------------------------------- |
+| heartbeat | used to maintain connections and detect broken links |
+| identify  | used to identify the user of the gateway connection  |
+| resume    | used to resume a disconnected session                |
 
 ## Gateway Events
 
@@ -116,22 +116,24 @@ Events are payloads send from the API in order to provide certain data or respon
 | heartbeat       | used to acknowledge or request a heartbeat from the client                                      |
 | invalid session | invalid session, client should disconnect and reconnect with a fresh session                    |
 | reconnect       | indicates that the client should disconnect and try to resume after a short delay (few seconds) |
-| retrieve guilds | the server is requesting information on guilds from the client                                  |
 
 ## Gateway Dispatches
 
 Dispatches are specific types of events that are continuously streamed to the client based on user and automated actions.
 
-| name         | `t`          | description                                                                   |
-| ------------ | ------------ | ----------------------------------------------------------------------------- |
-| ready        | READY        | used to indicate that the client is ready and will start receiving dispatches |
-| resumed      | RESUMED      | same as ready, but for resumed connections                                    |
-| user update  | USER_UPDATE  | a user was updated                                                            |
-| guild ping   | GUILD_PING   | a guild ping                                                                  |
-| guild update | GUILD_UPDATE | a guild was updated                                                           |
-| image create | IMAGE_CREATE | an image was created                                                          |
-| image update | IMAGE_UPDATE | an image was updated                                                          |
-| image delete | IMAGE_DELETE | an image was deleted                                                          |
+Sometimes, dispatches may require or request a response from the client.
+
+| name            | `t`             | description                                                                   |
+| --------------- | --------------- | ----------------------------------------------------------------------------- |
+| ready           | READY           | used to indicate that the client is ready and will start receiving dispatches |
+| resumed         | RESUMED         | same as ready, but for resumed connections                                    |
+| user update     | USER_UPDATE     | a user was updated                                                            |
+| guild ping      | GUILD_PING      | a guild ping                                                                  |
+| guild update    | GUILD_UPDATE    | a guild was updated                                                           |
+| image create    | IMAGE_CREATE    | an image was created                                                          |
+| image update    | IMAGE_UPDATE    | an image was updated                                                          |
+| image delete    | IMAGE_DELETE    | an image was deleted                                                          |
+| retrieve guilds | RETRIEVE_GUILDS | the server is requesting information on guilds from the client                |
 
 ## All Commands, Events and Dispatches
 
