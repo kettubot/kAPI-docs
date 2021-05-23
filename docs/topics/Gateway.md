@@ -105,7 +105,6 @@ Commands are payloads sent to the Gateway in order to perform specific actions o
 | heartbeat      | used to maintain connections and detect broken links      |
 | identify       | used to identify the user of the gateway connection       |
 | resume         | used to resume a disconnected session                     |
-| request guilds | used to request a set of guilds in batch from the gateway |
 
 ## Gateway Events
 
@@ -163,10 +162,6 @@ Sent by the client in order to resume a connection.
 | seq        | integer | last recorded `seq` (for replaying events) |
 
 If resuming is successful, the gateway will start to progressively replay missed dispatch events. Completion will be marked by a `RESUMED` dispatch event, and all dispatches after will be in real time.
-
-### Request Guilds
-
-Sent by the client to request a bulk collection of guilds. Not sure if this is actually necessary, might be deprecated or simplified in the future.
 
 ### Hello
 
