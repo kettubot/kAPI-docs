@@ -1,15 +1,15 @@
 # Reference
 
-kAPI, or the Kettu API, is much like Discord's. We have a RESTful API for doing stuff, and a WebSocket Gateway for receiving stuff.
+kAPI, or the Kettu API, is much like Discord's. We have a restful API for doing stuff, and a WebSocket Gateway for receiving stuff. Sometimes we use WebSocket for doing stuff as well.
 
 The API operates from the following base URL:
 
-```txt
+```
 https://api.kettu.cc/v{version}
 ```
 
 > warn
-> This documentation is primarily for kAPI developers. Many private routes are therefore documented, even though a typical user would have no access to them. Is this kind of a security risk? Probably.
+> This documentation is primarily for kAPI developers. Many private routes are therefore documented, even though a typical user would have no access to them. Is this kind of a security risk? Probably. But they're protected, and we keep an eye on things.
 
 ## Versioning
 
@@ -65,10 +65,6 @@ Simulation is done by setting the `X-Simulating` header to a user id.
 
 > warn
 > Simulation does not allow access to private endpoints, such as /users/@me
-
-## Consistency
-
-As kAPI powers Kettu & Kettu's dashboard, it's within our interests to make the system as reliable as possible. However, much like Discord, nothing can be guaranteed. 'Stateless is good', the engineers at Discord say, while our bots chew up gigabytes of RAM.
 
 ## Resource Fields
 
