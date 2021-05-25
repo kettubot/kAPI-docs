@@ -66,6 +66,10 @@ Simulation is done by setting the `X-Simulating` header to a user id.
 > warn
 > Simulation does not allow access to private endpoints, such as /users/@me
 
+## Ratelimiting
+
+Ratelimit information is returned for *all* requests. It's very similar to Discord's ratelimiting, shouldn't be hard to figure out. Please respect these rules, or you might find yourself with a Cloudflare ban.
+
 ## Resource Fields
 
 Yeah look I'm just gonna copy this table from the Discord docs.
