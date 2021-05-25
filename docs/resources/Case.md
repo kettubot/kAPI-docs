@@ -4,18 +4,19 @@ The easiest way to understand the case system is to think of a fairly typical pu
 
 Kettu provides the functionality to log any mod action like a punishment. So as well as mutes and bans, you can also have server lockdowns, purges, and punishment modifications logged just like other punishments. Obviously punishment is no longer a very good name for this system, so we're using the simpler 'cases' instead.
 
-A case is fairly abstract, as depending on the context, the fields can and will vary a lot.
+Although all cases belong to a specific guild, the documentation is separate due to the complexity of the system. 
 
 ## Case Object
 
 ### Case Structure
 
-Cases are composed of three types of field.
+A case is fairly abstract, as depending on the type, the fields can and will vary a lot.
 
-**Global Fields**: Apply to all cases.
-**Sub Fields**: Apply to some cases, depending on the type. You can think of these as 'if applicable'
+Cases are composed of two main types of field.
 
-For this reason, all sub-global and local fields are nullable on a general case structure.
+**'global fields'** apply to all cases, while **'sub fields'** apply to only some cases, depending on the type
+
+For this reason, all sub fields are nullable on a general case structure.
 
 | field         | type            | level  | description                                        |
 | ------------- | --------------- | ------ | -------------------------------------------------- |
@@ -42,25 +43,25 @@ For this reason, all sub-global and local fields are nullable on a general case 
 
 ### Lock Channel, Server, Category
 
-**Sub-globals:** `channel_id`, `time`
+**Sub Fields**: `channel_id?`, `time?`
 
 When a channel, server or category is locked or unlocked.
 
 ### Ban
 
-**Sub Fields**: `user_id`, `user_dm`, `strikes`(?), `time`
+**Sub Fields**: `user_id`, `user_dm`, `strikes?`(?), `time?`
 
 When a user is banned or tempbanned from a guild. Not sure if strikes is relevant since they're, like, banned.
 
 ### Kick
 
-**Sub Fields**: `user_id`, `user_dm`, `strikes`
+**Sub Fields**: `user_id`, `user_dm`, `strikes?`
 
 When a user is kicked from a guild.
 
 ### Mute
 
-**Sub Fields**: `user_id`, `user_dm`, `strikes`, `time`
+**Sub Fields**: `user_id`, `user_dm`, `strikes?`, `time?`
 
 When a user is muted within a guild.
 
