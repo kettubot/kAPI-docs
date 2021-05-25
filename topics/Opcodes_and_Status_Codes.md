@@ -8,15 +8,13 @@ This is probably the most unoriginal page in this entire set of documentation. I
 
 | code | name            | action  | meaning                                        |
 | ---- | --------------- | ------- | ---------------------------------------------- |
-| 0    | dispatch        | receive | all typical gateway events                     |
+| 0    | dispatch        | both    | all typical gateway events                     |
 | 1    | heartbeat       | both    | regular heartbeat to detect broken connections |
 | 3    | hello           | receive | first received message after connecting        |
 | 4    | identify        | send    | used to identify the connection                |
 | 5    | resume          | send    | used to resume a previous connection           |
 | 6    | invalid session | receive | disconnect and start a new session             |
 | 7    | reconnect       | receive | you need to reconnect                          |
-| 9    | request guilds  | send    | used to request bulk data for a set of guilds  |
-| 10   | retrieve guilds | both    | the server is retrieving guild data from you   |
 
 ### Close Codes
 
