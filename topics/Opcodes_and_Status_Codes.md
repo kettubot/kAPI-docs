@@ -13,8 +13,6 @@ This is probably the most unoriginal page in this entire set of documentation. I
 | 3    | hello           | receive | first received message after connecting        |
 | 4    | identify        | send    | used to identify the connection                |
 | 5    | resume          | send    | used to resume a previous connection           |
-| 6    | invalid session | receive | disconnect and start a new session             |
-| 7    | reconnect       | receive | you need to reconnect                          |
 
 ### Close Codes
 

@@ -39,8 +39,7 @@ SHARDS (1 << 0)
 
 USERS (1 << 1)
   - USER_UPDATE
-  - USER_DELETE
-  - USER_REMINDER_TRIGGER
+  - USER_REMINDER
   - USER_VOTE
 
 GUILDS (1 << 2)
@@ -64,6 +63,7 @@ IMAGES (1 << 5)
 
 INTERNAL (1 << 6)
   - BLACKLIST_UPDATE
+  - 
   - RESTART
 ```
 
@@ -100,28 +100,28 @@ When using `wss.broadcast`, sending an event to clients in a specific room will 
 
 Commands are payloads sent to the Gateway in order to perform specific actions or request data.
 
-| name      | description                                          |
-| --------- | ---------------------------------------------------- |
-| heartbeat | used to maintain connections and detect broken links |
-| identify  | used to identify the user of the gateway connection  |
-| resume    | used to resume a disconnected session                |
+| op  | name      | description                                          |
+| --- | --------- | ---------------------------------------------------- |
+| 1   | heartbeat | used to maintain connections and detect broken links |
+| 4   | identify  | used to identify the user of the gateway connection  |
+| 5   | resume    | used to resume a disconnected session                |
 
 ## Gateway Events
 
 Events are payloads send from the API in order to provide certain data or respond to an action.
 
-| name            | description                                                                                     |
-| --------------- | ----------------------------------------------------------------------------------------------- |
-| hello           | used to initiate the connection and heartbeating                                                |
-| heartbeat       | used to acknowledge or request a heartbeat from the client                                      |
-| invalid session | invalid session, client should disconnect and reconnect with a fresh session                    |
-| reconnect       | indicates that the client should disconnect and try to resume after a short delay (few seconds) |
+You may notice that, unlike Discord's API, we don't have opcodes for closing connections. I don't get why you do, if you have a close code anyway?
+
+| op  | name      | description                                                |
+| --- | --------- | ---------------------------------------------------------- |
+| 3   | hello     | used to initiate the connection and heartbeating           |
+| 1   | heartbeat | used to acknowledge or request a heartbeat from the client |
 
 ## Gateway Dispatches
 
 Dispatches are specific types of events that are continuously streamed to the client based on user and automated actions.
 
-Sometimes, dispatches may require or request a response from the client.
+Sometimes, dispatches may require or request a response from the client. All dispatches are opcode `0`.
 
 | name            | `t`             | description                                                                   |
 | --------------- | --------------- | ----------------------------------------------------------------------------- |
