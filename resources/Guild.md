@@ -162,6 +162,14 @@ For more information on the `emoji` object, check out the [Discord docs](https:/
 | id       | integer | image id       |
 | category | string  | image category |
 
+## Guild Permissions
+
+Due to the [mod roles](#docs:resources:guild/guild-configuration-mod-roles-structure) structure, there is an extra set of requirements a user must pass in order to access guild-related endpoints.
+
+If the required permission is `READ_GUILDS`, the user must also share that server with kettu.
+
+If the required permission is `MANAGE_GUILDS`, the user must also have the `mod` or `admin` role within that server. If no roles are configured, the permissions simply fallback to the `MANAGE_SERVER` Discord permission (which includes `ADMINISTRATOR`s and the server owner).
+
 ## Get Guild % GET /guilds/{guild.id#docs:resources:guild/guild-structure} % REQUIRES `READ_GUILDS`
 
 Returns the corresponding [guild](#docs:resources:guild/guild-structure) object.
