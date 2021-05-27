@@ -6,13 +6,13 @@ This is probably the most unoriginal page in this entire set of documentation. I
 
 ### Opcodes
 
-| code | name            | action  | meaning                                        |
-| ---- | --------------- | ------- | ---------------------------------------------- |
-| 0    | dispatch        | both    | all typical gateway events                     |
-| 1    | heartbeat       | both    | regular heartbeat to detect broken connections |
-| 3    | hello           | receive | first received message after connecting        |
-| 4    | identify        | send    | used to identify the connection                |
-| 5    | resume          | send    | used to resume a previous connection           |
+| code | name      | action  | meaning                                        |
+| ---- | --------- | ------- | ---------------------------------------------- |
+| 0    | dispatch  | both    | all typical gateway events                     |
+| 1    | heartbeat | both    | regular heartbeat to detect broken connections |
+| 3    | hello     | receive | first received message after connecting        |
+| 4    | identify  | send    | used to identify the connection                |
+| 5    | resume    | send    | used to resume a previous connection           |
 
 ### Close Codes
 
@@ -100,6 +100,7 @@ Unlike Discord, who are lazy, we actually document all our JSON error codes. Pro
 | 40007 | expired access token                  |
 | 50001 | missing access                        |
 | 50002 | insufficient permissions              |
+| 50003 | invalid query                         |
 | 50004 | invalid body                          |
 | 50005 | invalid content type                  |
 | 50006 | ip already verified                   |
