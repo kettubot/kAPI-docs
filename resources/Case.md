@@ -130,11 +130,11 @@ When the slowmode in a channel is changed.
 
 Cases, as a subset of the guild endpoints, follow the same [permission requirements](#docs:resources:guild/guild-permissions).
 
-## Get Guild Case % GET /guilds/{guild.id#docs:resources:guild/guild-structure:id}/cases/{case.id#docs:resources:case/case-structure:id} % REQUIRES ?
+## Get Guild Case % GET /guilds/{guild.id#docs:resources:guild/guild-structure:id}/cases/{case.id#docs:resources:case/case-structure:id} % REQUIRES `MANAGE_GUILDS`
 
 Returns the corresponding [case](#docs:resources:case/case-structure) object.
 
-## List Guild Cases % GET /guilds/{guild.id#docs:resources:guild/guild-structure:id}/cases % REQUIRES ?
+## List Guild Cases % GET /guilds/{guild.id#docs:resources:guild/guild-structure:id}/cases % REQUIRES `MANAGE_GUILDS`
 
 Returns a list of [case](#docs:resources:case/case-structure) objects. The following query parameters are available.
 
