@@ -20,6 +20,7 @@ The case system, although nested within the guild endpoints, is documented in a 
 | configs | object    | guild configurations mapped by the bot ID                             |
 | config  | object    | specific guild configuration (see below)                              |
 | premium | snowflake | user id of the user who is responsible for the guild's premium status |
+| audit   | object    | guild audit status                                                    |
 
 When a guild is requested from the API, the correct configuration is selected.
 
@@ -162,6 +163,14 @@ For more information on the `emoji` object, check out the [Discord docs](https:/
 | id       | integer | image id       |
 | category | string  | image category |
 
+### Guild Audit Structure
+
+| field       | type      | description                 |
+| ----------- | --------- | --------------------------- |
+| audited     | integer   | number of members audited   |
+| start       | integer   | time this audit was started |
+| last_member | snowflake | id of last audited member   |
+
 ## Guild Permissions
 
 Due to the [mod roles](#docs:resources:guild/guild-configuration-mod-roles-structure) structure, there is an extra set of requirements a user must pass in order to access guild-related endpoints.
@@ -170,12 +179,27 @@ If the required permission is `READ_GUILDS`, the user must also share that serve
 
 If the required permission is `MANAGE_GUILDS`, the user must also have the `mod` or `admin` role within that server. If no roles are configured, the permissions simply fallback to the `MANAGE_SERVER` Discord permission (which includes `ADMINISTRATOR`s and the server owner).
 
+For bot users, the guild id must be present in the `allowed_guilds` array.
+
 ## Get Guild % GET /guilds/{guild.id#docs:resources:guild/guild-structure} % REQUIRES `READ_GUILDS`
 
 Returns the corresponding [guild](#docs:resources:guild/guild-structure) object.
 
-Requires `READ_GUILDS` with `MANAGE_SERVER` permissions (or `allowed_guilds` for `bot`s) or `READ_GUILDS_GLOBAL`.
+## Modify Guild % PATCH /guilds/{guild.id#docs:resources:guild/guild-structure} % REQUIRES `MANAGE_GUILDS`
 
-## Ping Guild % POST /guilds/{guild.id#docs:resources:guild/guild-structure}/ping
+Modifies and returns the new [guild](#docs:resources:guild/guild-structure) object.
 
-Pings a specific guild, sending out a `GUILD_PING` websocket event to all connected clients in the guild.
+### Modify Guild JSON Body
+
+| field  | type   | description                               |
+| ------ | ------ | ----------------------------------------- |
+| prefix | string | new prefix, must match `/^[^\s ]{1,32}$/` |
+
+## Initiate Guild Audit % POST /guilds/{guild.id#docs:resources:guild/guild-structure}/audit % REQUIRES `MANAGE_GUILDS`
+
+Begins an audit on the current guild, given the guild has never been audited before.
+
+Returns a 204 No Content on success.
+
+> info
+> Guild audits process every member in a guild, and ensure any boosting member has been cached in kAPI. This allows boost messages to function correcetly.
