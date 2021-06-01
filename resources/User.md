@@ -18,12 +18,12 @@ It should be noted that even though bot users may not have any need at all for a
 
 ### User Structure
 
-| field        | type      | user types | visibility | description                              |
-| ------------ | --------- | ---------- | ---------- | ---------------------------------------- |
-| id           | snowflake | all        | public     | the user's discord id                    |
-| type         | string    | all        | public     | type of user, `normal`, `bot` or `kettu` |
-| perms        | integer   | all        | private    | the permissions on a user's account      |
-| allowed_ips? | array     | all        | self       | allowed IPs for API access               |
+| field        | type             | user types | visibility | description                              |
+| ------------ | ---------------- | ---------- | ---------- | ---------------------------------------- |
+| id           | snowflake        | all        | public     | the user's discord id                    |
+| type         | string           | all        | public     | type of user, `normal`, `bot` or `kettu` |
+| perms        | integer          | all        | private    | the permissions on a user's account      |
+| allowed_ips? | array of objects | all        | self       | allowed IPs for API access               |
 
 #### User Structure 'user' Extra Fields
 
@@ -138,6 +138,16 @@ The order of this list matters - implications can cause further implications, gi
 | MANAGE_USERS         | READ_USERS                                                                     |
 | MANAGE_IMAGES        | READ_IMAGES                                                                    |
 | MANAGE_GUILDS        | READ_GUILDS                                                                    |
+
+### User Allowed IPs Structure
+
+All users of type `bot` and `kettu` must use a pre-authorised IP. This also applies to some `user`s, depending on their permissions. See the [user permissions table](#docs:resources:user/user-permissions), specifically the `mfa` column, for specifics.
+
+| field     | type    | description                                      |
+| --------- | ------- | ------------------------------------------------ |
+| address   | string  | the ip address                                   |
+| last_used | integer | last time the ip was used to make a request      |
+| type      | integer | ip type (0 = permanent, 1 = user, 2 = temporary) |
 
 ### User Flags
 
