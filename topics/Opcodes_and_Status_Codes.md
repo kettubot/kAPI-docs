@@ -33,6 +33,7 @@ When writing stuff like this, I've always been unsure whether to re-order the co
 | 4012 | invalid api version   | abort   | that api version isn't supported                       |
 | 4013 | invalid intents       | abort   | your intents are configured wrong                      |
 | 4014 | disallowed intents    | abort   | you aren't allowed to use one or more of those intents |
+| 4015 | invalid shard data    | abort   | you aren't sending required shard data (kettu only)    |
 
 Actions are only suggestions, and will depend on your implementation.
 
