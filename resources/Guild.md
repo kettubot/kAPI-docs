@@ -14,13 +14,14 @@ The case system, although nested within the guild endpoints, is documented in a 
 
 ### Guild Structure
 
-| field   | type      | description                                                           |
-| ------- | --------- | --------------------------------------------------------------------- |
-| id      | snowflake | guild's discord id                                                    |
-| configs | object    | guild configurations mapped by the bot ID                             |
-| config  | object    | specific guild configuration (see below)                              |
-| premium | snowflake | user id of the user who is responsible for the guild's premium status |
-| audit   | object    | guild audit status                                                    |
+| field          | type      | description                                                           |
+| -------------- | --------- | --------------------------------------------------------------------- |
+| id             | snowflake | guild's discord id                                                    |
+| configs        | object    | guild configurations mapped by the bot ID                             |
+| config         | object    | specific guild configuration (see below)                              |
+| premium        | snowflake | user id of the user who is responsible for the guild's premium status |
+| audit          | object    | guild audit status                                                    |
+| nextCaseNumber | integer   | case number for the next case (approximate)                           |
 
 When a guild is requested from the API, the correct configuration is selected.
 
@@ -29,6 +30,28 @@ If a Kettu client is requesting, the corresponding config will be returned. Othe
 - The config specified by the `instance` query parameter
 - The only available config
 - Main Kettu's config
+
+#### Example Guild
+
+Example guild from a request to `/api/guilds/685932693908881408?instance=690006253027721231`
+
+```json
+{
+  "id": "685932693908881408",
+  "configs": {
+    "690006253027721231": { "prefix": "+" },
+    "698038148055302174": { "prefix": "^" }
+  },
+  "config": { "prefix": "+" },
+  "premium": "281665697593950209",
+  "audit": {
+    "audited": 20,
+    "start": 1625532600036,
+    "last_member": "281665697593950209"
+  },
+  "nextCaseNumber": 5
+}
+```
 
 ### Guild Configuration Structure
 
