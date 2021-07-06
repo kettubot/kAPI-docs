@@ -77,36 +77,36 @@ Unlike Discord, who are lazy, we actually document all our JSON error codes. Pro
 - **4xxxx**: authorization or request issue
 - **5xxxx**: invalid request configuration of some kind, similar to 2xxxx but more generic
 
-| code  | meaning                               |
-| ----- | ------------------------------------- |
-| 0     | general error                         |
-| 10001 | unknown user                          |
-| 10002 | unknown guild                         |
-| 10003 | unknown member                        |
-| 10004 | unknown image                         |
-| 10005 | unknown image category                |
-| 10006 | unknown service                       |
-| 10007 | unknown service event                 |
-| 10008 | unknown service history               |
-| 10009 | unknown interruption                  |
-| 10010 | unknown interruption update           |
-| 10011 | unknown kettu                         |
-| 10012 | unknown kettu shard                   |
-| 40001 | blacklisted                           |
-| 40002 | unauthorized, invalid token           |
-| 40003 | bots cannot use this endpoint         |
-| 40004 | invalid route ratelimit configuration |
-| 40005 | invalid simulation target             |
-| 40006 | missing access token                  |
-| 40007 | expired access token                  |
-| 50001 | missing access                        |
-| 50002 | insufficient permissions              |
-| 50003 | invalid query                         |
-| 50004 | invalid body                          |
-| 50005 | invalid content type                  |
-| 50006 | ip already verified                   |
-| 50007 | invalid mfa code                      |
-| 50008 | invalid ip for the mfa code           |
+| code  | meaning                                           |
+| ----- | ------------------------------------------------- |
+| 0     | general error                                     |
+| 10001 | unknown user                                      |
+| 10002 | unknown guild                                     |
+| 10003 | unknown member                                    |
+| 10004 | unknown image                                     |
+| 10005 | unknown image category                            |
+| 10006 | unknown service                                   |
+| 10007 | unknown service event                             |
+| 10008 | unknown service history                           |
+| 10009 | unknown interruption                              |
+| 10010 | unknown interruption update                       |
+| 10011 | unknown kettu                                     |
+| 10012 | unknown kettu shard                               |
+| 40001 | blacklisted                                       |
+| 40002 | unauthorized, invalid token                       |
+| 40003 | X cannot use this endpoint (could be bots, users) |
+| 40004 | invalid route ratelimit configuration             |
+| 40005 | invalid simulation target                         |
+| 40006 | missing access token                              |
+| 40007 | expired access token                              |
+| 50001 | missing access                                    |
+| 50002 | insufficient permissions                          |
+| 50003 | invalid query                                     |
+| 50004 | invalid body                                      |
+| 50005 | invalid content type                              |
+| 50006 | ip already verified                               |
+| 50007 | invalid mfa code                                  |
+| 50008 | invalid ip for the mfa code                       |
 
 ### 5xx Responses
 
