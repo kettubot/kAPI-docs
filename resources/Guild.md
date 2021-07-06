@@ -19,8 +19,8 @@ The case system, although nested within the guild endpoints, is documented in a 
 | id             | snowflake | guild's discord id                                                    |
 | configs        | object    | guild configurations mapped by the bot ID                             |
 | config         | object    | specific guild configuration (see below)                              |
-| premium        | snowflake | user id of the user who is responsible for the guild's premium status |
-| audit          | object    | guild audit status                                                    |
+| premium?        | snowflake | user id of the user who is responsible for the guild's premium status |
+| audit?          | object    | guild audit status                                                    |
 | nextCaseNumber | integer   | case number for the next case (approximate)                           |
 
 When a guild is requested from the API, the correct configuration is selected.
