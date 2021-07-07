@@ -28,6 +28,7 @@ For this reason, all sub fields are nullable on a general case structure.
 | ------------- | --------------- | ------ | -------------------------------------------------- |
 | id            | integer         | global | case number, incrementing from zero per-guild      |
 | guild_id      | snowflake       | global | guild this case belongs to                         |
+| created_at    | integer         | global | the time when the case was created                 |
 | type          | string          | global | type of case - such as mute or lock channel        |
 | reason?       | string          | global | reason, if given                                   |
 | log?          | object          | global | case log message information, if sent              |
