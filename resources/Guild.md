@@ -19,8 +19,8 @@ The case system, although nested within the guild endpoints, is documented in a 
 | id             | snowflake | guild's discord id                                                    |
 | configs        | object    | guild configurations mapped by the bot ID                             |
 | config         | object    | specific guild configuration (see below)                              |
-| premium?        | snowflake | user id of the user who is responsible for the guild's premium status |
-| audit?          | object    | guild audit status                                                    |
+| premium?       | snowflake | user id of the user who is responsible for the guild's premium status |
+| audit?         | object    | guild audit status                                                    |
 | nextCaseNumber | integer   | case number for the next case (approximate)                           |
 
 When a guild is requested from the API, the correct configuration is selected.
@@ -57,14 +57,14 @@ Example guild from a request to `/api/guilds/685932693908881408?instance=6900062
 
 Guild configuration, in the global scope, only stores `prefix`. All other settings are further categorised under other objects.
 
-| field    | type             | description                                 |
-| -------- | ---------------- | ------------------------------------------- |
-| prefix   | string           | guild prefix                                |
-| disabled | array of strings | list of commands that are globally disabled |
-| logs     | object           | logging configuration                       |
-| mod      | object           | moderation configuration                    |
-| roles    | object           | roles configuration (selfroles, reactroles) |
-| social   | object           | social commands configuration               |
+| field     | type             | description                                 |
+| --------- | ---------------- | ------------------------------------------- |
+| prefix?   | string           | guild prefix                                |
+| disabled? | array of strings | list of commands that are globally disabled |
+| logs      | object           | logging configuration                       |
+| mod       | object           | moderation configuration                    |
+| roles?    | object           | roles configuration (selfroles, reactroles) |
+| social?   | object           | social commands configuration               |
 
 A configuration section is used when a certain area provides multiple levels of functionality across different areas.
 
@@ -76,10 +76,10 @@ However, `autopurge` is an extension of the `purge` command, and is a singular f
 
 | field   | type      | description                         |
 | ------- | --------- | ----------------------------------- |
-| mod     | snowflake | log channel for moderation actions  |
+| mod?    | snowflake | log channel for moderation actions  |
 | modSkip | integer   | action types which aren't logged \* |
-| join    | snowflake | join log channel                    |
-| leave   | snowflake | leave log channel                   |
+| join?   | snowflake | join log channel                    |
+| leave?  | snowflake | leave log channel                   |
 | type    | integer   | message style for logs              |
 
 \* Same format as Guild Configuration Mod Actions Structure below, but all are disabled (not skipped) by default
@@ -106,19 +106,19 @@ Giddy still needs to plan this.
 | ----------- | ------- | -------------------------------------------------------------- |
 | confirm     | string  | level at which to confirm mod actions: `none`, `mass` or `all` |
 | type        | integer | message style for mod actions                                  |
-| deleteCmd   | boolean | whether to delete mod commands                                 |
-| deleteErr   | boolean | whether to (auto?) delete mod command errors                   |
+| deleteCmd?  | boolean | whether to delete mod commands, default false                  |
+| deleteErr?  | boolean | whether to (auto?) delete mod command errors, default false    |
 | dm          | object  | mod dm configuration                                           |
 | role        | object  | moderation role IDs                                            |
 | actionCases | integer | bitfield representing which actions are counted as cases       |
 
 ##### Guild Configuration Mod DM Structure
 
-| field   | type    | description                          |
-| ------- | ------- | ------------------------------------ |
-| dm      | boolean | whether DMs are enabled              |
-| showMod | boolean | whether the responsible mod is shown |
-| appeals | string  | link to appeals page                 |
+| field    | type    | description                          |
+| -------- | ------- | ------------------------------------ |
+| dm       | boolean | whether DMs are enabled              |
+| showMod  | boolean | whether the responsible mod is shown |
+| appeals? | string  | link to appeals page                 |
 
 ##### Guild Configuration Mod Roles Structure
 
@@ -126,12 +126,12 @@ The mod roles structure is an object of role types mapped to their corresponding
 
 | role type | purpose                             |
 | --------- | ----------------------------------- |
-| mute      | role assigned to muted users        |
-| trusted   | users with a lower automod strength |
-| bypass    | users with no automod               |
-| helper    | role for helpers                    |
-| mod       | role for mods, step up from helpers |
-| admin     | role for admins, step up from mods  |
+| mute?     | role assigned to muted users        |
+| trusted?  | users with a lower automod strength |
+| bypass?   | users with no automod               |
+| helper?   | role for helpers                    |
+| mod?      | role for mods, step up from helpers |
+| admin?    | role for admins, step up from mods  |
 
 ##### Guild Configuration Mod Actions Structure
 
@@ -154,10 +154,10 @@ Determines whether certain actions are counted as new cases or not. Default-on a
 
 #### Guild Configuration Roles Structure
 
-| field      | type  | description                                                  |
-| ---------- | ----- | ------------------------------------------------------------ |
-| selfroles  | array | list of snowflakes of role IDs that can be used as selfroles |
-| reactroles | array | list of reactrole objects                                    |
+| field       | type  | description                                                  |
+| ----------- | ----- | ------------------------------------------------------------ |
+| selfroles?  | array | list of snowflakes of role IDs that can be used as selfroles |
+| reactroles? | array | list of reactrole objects                                    |
 
 ##### Guild Configuration Reaction Role Structure
 
@@ -174,10 +174,10 @@ For more information on the `emoji` object, check out the [Discord docs](https:/
 
 #### Guild Configuration Social Structure
 
-| field     | type             | description                                         |
-| --------- | ---------------- | --------------------------------------------------- |
-| sDelete   | boolean          | whether social command trigger messages are deleted |
-| blacklist | array of objects | list of blacklisted social images                   |
+| field      | type             | description                                                        |
+| ---------- | ---------------- | ------------------------------------------------------------------ |
+| sDelete?   | boolean          | whether social command trigger messages are deleted, default false |
+| blacklist? | array of objects | list of blacklisted social images                                  |
 
 ##### Guild Configuration Social Blacklist Structure
 

@@ -50,6 +50,12 @@ For this reason, all sub fields are nullable on a general case structure.
 | channel_id | snowflake | channel id of log message |
 | message_id | snowflake | log message id            |
 
+##### Case Log Message Structure Additional Fields
+
+| field   | type    | description                           |
+| ------- | ------- | ------------------------------------- |
+| pending | boolean | whether a log message send is pending |
+
 ## Case Types
 
 ### Lock Channel, Server, Category (`lockchannel`, `lockserver`, `lockcategory`)
