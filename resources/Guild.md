@@ -57,14 +57,16 @@ Example guild from a request to `/api/guilds/685932693908881408?instance=6900062
 
 Guild configuration, in the global scope, only stores `prefix`. All other settings are further categorised under other objects.
 
-| field     | type             | description                                 |
-| --------- | ---------------- | ------------------------------------------- |
-| prefix?   | string           | guild prefix                                |
-| disabled? | array of strings | list of commands that are globally disabled |
-| logs      | object           | logging configuration                       |
-| mod       | object           | moderation configuration                    |
-| roles?    | object           | roles configuration (selfroles, reactroles) |
-| social?   | object           | social commands configuration               |
+| field    | type             | description                                 |
+| -------- | ---------------- | ------------------------------------------- |
+| prefix?  | string           | guild prefix                                |
+| disabled | array of strings | list of commands that are globally disabled |
+| logs     | object           | logging configuration                       |
+| mod      | object           | moderation configuration                    |
+| roles    | object           | roles configuration (selfroles, reactroles) |
+| social   | object           | social commands configuration               |
+| raidmode | object           | auto raidmode configuration                 |
+| boost    | object           | boost messages configuration                |
 
 A configuration section is used when a certain area provides multiple levels of functionality across different areas.
 
@@ -106,8 +108,8 @@ Giddy still needs to plan this.
 | ----------- | ------- | -------------------------------------------------------------- |
 | confirm     | string  | level at which to confirm mod actions: `none`, `mass` or `all` |
 | type        | integer | message style for mod actions                                  |
-| deleteCmd?  | boolean | whether to delete mod commands, default false                  |
-| deleteErr?  | boolean | whether to (auto?) delete mod command errors, default false    |
+| deleteCmd   | boolean | whether to delete mod commands, default false                  |
+| deleteErr   | boolean | whether to (auto?) delete mod command errors, default false    |
 | dm          | object  | mod dm configuration                                           |
 | role        | object  | moderation role IDs                                            |
 | actionCases | integer | bitfield representing which actions are counted as cases       |
@@ -154,30 +156,30 @@ Determines whether certain actions are counted as new cases or not. Default-on a
 
 #### Guild Configuration Roles Structure
 
-| field       | type  | description                                                  |
-| ----------- | ----- | ------------------------------------------------------------ |
-| selfroles?  | array | list of snowflakes of role IDs that can be used as selfroles |
-| reactroles? | array | list of reactrole objects                                    |
+| field      | type  | description                                                  |
+| ---------- | ----- | ------------------------------------------------------------ |
+| selfroles  | array | list of snowflakes of role IDs that can be used as selfroles |
+| reactroles | array | list of reactrole objects                                    |
 
 ##### Guild Configuration Reaction Role Structure
 
-| field           | type       | description                          |
-| --------------- | ---------- | ------------------------------------ |
-| channelID       | snowflake  | channel id                           |
-| messageID       | snowflake  | message id                           |
-| roleID          | snowflake  | role id                              |
-| emoji.id        | ?snowflake | emoji id for reacting                |
-| emoji.name      | ?string    | ASCII emoji, or custom emoji name    |
-| emoji.animated? | boolean    | whether the emoji is animated or not |
+| field           | type      | description                          |
+| --------------- | --------- | ------------------------------------ |
+| channelID       | snowflake | channel id                           |
+| messageID       | snowflake | message id                           |
+| roleID          | snowflake | role id                              |
+| emoji.id?       | snowflake | emoji id for reacting                |
+| emoji.name?     | string    | ASCII emoji, or custom emoji name    |
+| emoji.animated? | boolean   | whether the emoji is animated or not |
 
 For more information on the `emoji` object, check out the [Discord docs](https://discord.com/developers/docs/resources/emoji#emoji-object-gateway-reaction-standard-emoji-example).
 
 #### Guild Configuration Social Structure
 
-| field      | type             | description                                                        |
-| ---------- | ---------------- | ------------------------------------------------------------------ |
-| sDelete?   | boolean          | whether social command trigger messages are deleted, default false |
-| blacklist? | array of objects | list of blacklisted social images                                  |
+| field     | type             | description                                                        |
+| --------- | ---------------- | ------------------------------------------------------------------ |
+| sDelete   | boolean          | whether social command trigger messages are deleted, default false |
+| blacklist | array of objects | list of blacklisted social images                                  |
 
 ##### Guild Configuration Social Blacklist Structure
 
@@ -185,6 +187,24 @@ For more information on the `emoji` object, check out the [Discord docs](https:/
 | -------- | ------- | -------------- |
 | id       | integer | image id       |
 | category | string  | image category |
+
+#### Guild Configuration Raidmode Structure
+
+| field   | type    | description                                                        |
+| ------- | ------- | ------------------------------------------------------------------ |
+| state   | string  | raidmode state: off, auto, or on (auto if triggered automatically) |
+| action  | string  | raidmode action: kick or ban                                       |
+| joins   | integer | number of joins per unit time to auto trigger                      |
+| seconds | integer | unit of time for the joins                                         |
+
+#### Guild Configuration Boost Structure
+
+| field      | type      | description                                                             |
+| ---------- | --------- | ----------------------------------------------------------------------- |
+| enabled    | boolean   | whether boost messages are enabled                                      |
+| channelID? | snowflake | boost message channel                                                   |
+| message?   | string    | message                                                                 |
+| embed?     | object    | embed (supports title, description, color, image, thumbnail and footer) |
 
 ### Guild Audit Structure
 
