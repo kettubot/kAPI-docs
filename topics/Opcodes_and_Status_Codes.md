@@ -109,6 +109,8 @@ Unlike Discord, who are lazy, we actually document all our JSON error codes. Pro
 | 50006 | ip already verified                               |
 | 50007 | invalid mfa code                                  |
 | 50008 | invalid ip for the mfa code                       |
+| 50009 | a guild audit is already underway                 |
+| 50010 | the guild has already been audited                |
 
 ### 5xx Responses
 
