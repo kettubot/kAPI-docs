@@ -208,11 +208,12 @@ For more information on the `emoji` object, check out the [Discord docs](https:/
 
 ### Guild Audit Structure
 
-| field       | type      | description                 |
-| ----------- | --------- | --------------------------- |
-| audited     | integer   | number of members audited   |
-| start       | integer   | time this audit was started |
-| last_member | snowflake | id of last audited member   |
+| field       | type      | description                  |
+| ----------- | --------- | ---------------------------- |
+| audited     | integer   | number of members audited    |
+| start       | integer   | time this audit was started  |
+| last_member | snowflake | id of last audited member    |
+| completed?  | integer   | when the audit was completed |
 
 ## Guild Permissions
 
