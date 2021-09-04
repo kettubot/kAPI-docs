@@ -94,6 +94,8 @@ Unlike Discord, who are lazy, we actually document all our JSON error codes. Pro
 | 10012 | unknown kettu shard                               |
 | 10013 | unknown case reservation key                      |
 | 10014 | unknown case                                      |
+| 10015 | unknown action                                    |
+| 20000 | only actions with status 3 are dismissable        |
 | 40001 | blacklisted                                       |
 | 40002 | unauthorized, invalid token                       |
 | 40003 | X cannot use this endpoint (could be bots, users) |

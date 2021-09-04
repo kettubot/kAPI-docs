@@ -64,14 +64,19 @@ IMAGES (1 << 5)
 
 INTERNAL (1 << 6)
   - BLACKLIST_UPDATE
-  - 
-  - RESTART
+  - KAPI_ACTION_UPDATE
 ```
 
 - `SHARDS` is missing `CREATE` and `DELETE`, new shards will simple go `ONLINE`
 - `USERS` is missing `CREATE` by design, as users always exist through REST
 - `GUILD_MEMBERS` is missing `CREATE` and `DELETE` by design, for the same reason as users
 - `INTERNAL` is private
+
+Some events will be send regardless of intents. These include:
+
+- `SHARD_INSTANCE_UPDATE`
+- `SHARD_TRANSFER_CACHE`
+- `SHARD_TRANSFER_COMPLETE`
 
 ### Websocket Rooms
 
